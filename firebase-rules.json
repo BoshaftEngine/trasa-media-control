@@ -6,15 +6,15 @@
         ".read": "auth != null",
 
         "config": {
-          ".write": "auth != null && auth.uid === 'PEGA_AQUI_TU_UID_DE_CONTROL'"
+          ".write": "auth != null && auth.uid === 'vcwTQVUSEkbmCMYAcTmgugq2bWo2'"
         },
 
         "tracks": {
-          ".write": "auth != null && auth.uid === 'PEGA_AQUI_TU_UID_DE_CONTROL'"
+          ".write": "auth != null && auth.uid === 'vcwTQVUSEkbmCMYAcTmgugq2bWo2'"
         },
 
         "command": {
-          ".write": "auth != null && auth.uid === 'PEGA_AQUI_TU_UID_DE_CONTROL'"
+          ".write": "auth != null && auth.uid === 'vcwTQVUSEkbmCMYAcTmgugq2bWo2'"
         },
 
         "status": {
