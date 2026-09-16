@@ -1,0 +1,27 @@
+{
+  "rules": {
+    "rooms": {
+      "trasa": {
+
+        ".read": "auth != null",
+
+        "config": {
+          ".write": "auth != null && auth.uid === 'PEGA_AQUI_TU_UID_DE_CONTROL'"
+        },
+
+        "tracks": {
+          ".write": "auth != null && auth.uid === 'PEGA_AQUI_TU_UID_DE_CONTROL'"
+        },
+
+        "command": {
+          ".write": "auth != null && auth.uid === 'PEGA_AQUI_TU_UID_DE_CONTROL'"
+        },
+
+        "status": {
+          ".write": "auth != null"
+        }
+
+      }
+    }
+  }
+}

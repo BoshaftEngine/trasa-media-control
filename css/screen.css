@@ -1,0 +1,206 @@
+html.screen-html,
+body.screen-body {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  margin:
+    0;
+
+  overflow:
+    hidden;
+
+  background:
+    #000;
+}
+
+.screen-stage {
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  overflow:
+    hidden;
+
+  background:
+    #000;
+}
+
+
+/* ============================================================
+   FONDO
+   ============================================================
+
+   SIN:
+   - animaciones
+   - transitions
+   - transform
+   - backface-visibility
+
+   El objetivo es que CEF lo repinte lo mínimo posible.
+*/
+.screen-background {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    0;
+
+  background-color:
+    #000;
+
+  background-repeat:
+    no-repeat;
+
+  background-position:
+    center center;
+
+  background-size:
+    cover;
+}
+
+
+/* ============================================================
+   YOUTUBE
+   ============================================================ */
+
+.youtube-wrap {
+  position:
+    fixed;
+
+  right:
+    24px;
+
+  bottom:
+    24px;
+
+  width:
+    min(480px, calc(100vw - 48px));
+
+  aspect-ratio:
+    16 / 9;
+
+  z-index:
+    15;
+
+  background:
+    #000;
+
+  border:
+    1px solid
+    rgba(255,255,255,.18);
+}
+
+.youtube-wrap iframe {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  border:
+    0;
+}
+
+
+/* ============================================================
+   BLACKOUT
+   ============================================================ */
+
+.screen-blackout {
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  z-index:
+    20;
+
+  background:
+    #000;
+
+  opacity:
+    0;
+
+  visibility:
+    hidden;
+
+  pointer-events:
+    none;
+}
+
+.screen-blackout.on {
+  opacity:
+    1;
+
+  visibility:
+    visible;
+}
+
+body.youtube-active
+.screen-blackout {
+  z-index:
+    5;
+}
+
+
+/* ============================================================
+   ERRORES
+   ============================================================ */
+
+.screen-error {
+  position:
+    fixed;
+
+  left:
+    50%;
+
+  bottom:
+    24px;
+
+  transform:
+    translateX(-50%);
+
+  z-index:
+    30;
+
+  max-width:
+    min(90vw, 780px);
+
+  padding:
+    10px 14px;
+
+  color:
+    #ffdede;
+
+  background:
+    rgba(20,10,10,.92);
+
+  border:
+    1px solid
+    #7f4040;
+
+  border-radius:
+    9px;
+
+  font:
+    13px/1.4
+    ui-monospace,
+    monospace;
+}
+
+.hidden {
+  display:
+    none !important;
+}

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>TRASA · Control</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css?v=1"
+  >
+
+</head>
+
+
+<body class="control-page">
+
+<main class="shell">
+
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <h1>TRASA · MEDIA CONTROL</h1>
+
+      <p>
+        Panel remoto para el proyector GTA
+      </p>
+
+    </div>
+
+
+    <div class="status-pill">
+
+      <span
+        id="screenDot"
+        class="dot"
+      ></span>
+
+      <span id="screenStatus">
+        Pantalla sin conectar
+      </span>
+
+    </div>
+
+  </header>
+
+
+  <div
+    id="configError"
+    class="notice error hidden"
+  ></div>
+
+
+  <div
+    id="message"
+    class="notice hidden"
+  ></div>
+
+
+  <section class="grid">
+
+
+    <!-- ======================================================
+         REPRODUCTOR
+         ====================================================== -->
+
+    <article class="card">
+
+      <h2>Reproductor</h2>
+
+
+      <div class="now-playing">
+
+        <img
+          id="nowCover"
+          class="cover"
+          alt=""
+        >
+
+
+        <div class="now-info">
+
+          <div
+            id="nowTitle"
+            class="now-title"
+          >
+            Sin reproducción
+          </div>
+
+          <div
+            id="nowMeta"
+            class="muted"
+          >
+            0 / 0
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-wrap">
+
+        <span
+          id="timeCurrent"
+          class="muted"
+        >
+          0:00
+        </span>
+
+
+        <input
+          id="seekSlider"
+          type="range"
+          min="0"
+          max="1000"
+          value="0"
+        >
+
+
+        <span
+          id="timeTotal"
+          class="muted"
+        >
+          0:00
+        </span>
+
+      </div>
+
+
+      <div class="transport">
+
+        <button id="prevBtn">
+          ⏮
+        </button>
+
+        <button id="backBtn">
+          −10
+        </button>
+
+        <button
+          id="playPauseBtn"
+          class="primary"
+        >
+          ▶
+        </button>
+
+        <button id="forwardBtn">
+          +10
+        </button>
+
+        <button id="nextBtn">
+          ⏭
+        </button>
+
+      </div>
+
+
+      <div class="row">
+
+        <button
+          id="stopBtn"
+          class="danger"
+        >
+          ■ Parar
+        </button>
+
+        <button id="shuffleBtn">
+          🔀 Aleatoria
+        </button>
+
+        <button id="restartBtn">
+          ↻ Reiniciar
+        </button>
+
+      </div>
+
+
+      <h3>Volumen</h3>
+
+
+      <div class="row">
+
+        <input
+          id="volumeSlider"
+          type="range"
+          min="0"
+          max="100"
+          value="65"
+          class="grow"
+        >
+
+        <span
+          id="volumeLabel"
+          class="muted"
+        >
+          65%
+        </span>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ======================================================
+         PANTALLA
+         ====================================================== -->
+
+    <article class="card">
+
+      <h2>Pantalla</h2>
+
+
+      <div class="stack">
+
+        <label>
+
+          Imagen de fondo
+
+          <input
+            id="backgroundUrl"
+            type="text"
+            value="assets/fondo.png"
+          >
+
+        </label>
+
+
+        <div class="row">
+
+          <button
+            id="applyBackgroundBtn"
+            class="primary"
+          >
+            Aplicar imagen
+          </button>
+
+
+          <button id="showImageBtn">
+            Mostrar imagen
+          </button>
+
+
+          <button id="blackoutBtn">
+            Pantalla negra
+          </button>
+
+        </div>
+
+
+        <label>
+
+          Ajuste de imagen
+
+          <select id="fitMode">
+
+            <option value="cover">
+              Llenar pantalla (cover)
+            </option>
+
+            <option value="contain">
+              Mostrar completa (contain)
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <button id="reloadScreenBtn">
+          ↻ Recargar pantalla GTA
+        </button>
+
+
+        <p class="small-note">
+          Recomendado: PNG/JPG 1920×1080.
+          Para el fondo principal sustituye
+          directamente <code>assets/fondo.png</code>.
+        </p>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ======================================================
+         LISTA
+         ====================================================== -->
+
+    <article class="card full">
+
+      <h2>Lista de reproducción</h2>
+
+
+      <div class="row">
+
+        <input
+          id="playlistUrl"
+          type="url"
+          class="grow"
+        >
+
+        <a
+          id="openPlaylistBtn"
+          class="button-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Abrir playlist Suno
+        </a>
+
+      </div>
+
+
+      <div
+        id="trackList"
+        class="track-list"
+      >
+        <div class="small-note">
+          Todavía no hay pistas importadas.
+        </div>
+      </div>
+
+
+      <h3>
+        Importar Suno y YouTube
+      </h3>
+
+
+      <p class="small-note">
+        Una pista por línea. Puedes utilizar:
+        <br>
+        <code>Nombre | enlace</code>
+        <br>
+        o simplemente pegar el enlace.
+      </p>
+
+
+      <textarea
+        id="trackImport"
+        placeholder="TRASA Hardbass | https://suno.com/song/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#10;Tema YouTube | https://www.youtube.com/watch?v=XXXXXXXXXXX"
+      ></textarea>
+
+
+      <div class="row">
+
+        <button
+          id="importTracksBtn"
+          class="primary"
+        >
+          Importar / sustituir lista
+        </button>
+
+
+        <button
+          id="clearTracksBtn"
+          class="danger"
+        >
+          Vaciar lista
+        </button>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ======================================================
+         FIREBASE
+         ====================================================== -->
+
+    <article class="card">
+
+      <h2>Seguridad Firebase</h2>
+
+      <p class="small-note">
+        Copia este UID y colócalo en las reglas
+        de Realtime Database.
+      </p>
+
+      <div
+        id="uidBox"
+        class="uid-box"
+      >
+        Conectando…
+      </div>
+
+      <button id="copyUidBtn">
+        Copiar UID
+      </button>
+
+    </article>
+
+
+
+    <!-- ======================================================
+         URL GTA
+         ====================================================== -->
+
+    <article class="card">
+
+      <h2>URL para GTA</h2>
+
+      <p class="small-note">
+        Esta es la URL que se pega en el proyector.
+      </p>
+
+      <div
+        id="screenUrlBox"
+        class="uid-box"
+      ></div>
+
+      <button id="copyScreenUrlBtn">
+        Copiar URL
+      </button>
+
+    </article>
+
+
+  </section>
+
+</main>
+
+
+<script
+  type="module"
+  src="js/control.js?v=1"
+></script>
+
+
+</body>
+
+</html>

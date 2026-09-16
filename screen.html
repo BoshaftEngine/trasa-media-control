@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" class="screen-html">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="referrer"
+    content="strict-origin-when-cross-origin"
+  >
+
+  <title>TRASA · Screen</title>
+
+  <link
+    rel="stylesheet"
+    href="css/screen.css?v=1"
+  >
+
+</head>
+
+
+<body class="screen-body">
+
+  <main class="screen-stage">
+
+    <!--
+      FONDO ESTÁTICO DE EMERGENCIA.
+
+      Incluso si JavaScript o Firebase fallan,
+      assets/fondo.png sigue mostrándose.
+    -->
+    <div
+      id="screenBackground"
+      class="screen-background"
+      style="background-image:url('assets/fondo.png');"
+    ></div>
+
+
+    <!-- YouTube: visible cuando la pista es YouTube -->
+    <div
+      id="youtubeWrap"
+      class="youtube-wrap hidden"
+    >
+      <div id="youtubePlayer"></div>
+    </div>
+
+
+    <!-- Pantalla negra -->
+    <div
+      id="blackout"
+      class="screen-blackout"
+    ></div>
+
+
+    <!-- Errores -->
+    <div
+      id="screenError"
+      class="screen-error hidden"
+    ></div>
+
+  </main>
+
+
+  <!-- Suno -->
+  <audio
+    id="audio"
+    preload="auto"
+  ></audio>
+
+
+  <!--
+    Cambia v=1 por v=2, v=3... si alguna vez necesitas
+    forzar a GTA/CEF a descargar una versión nueva.
+  -->
+  <script
+    type="module"
+    src="js/screen.js?v=1"
+  ></script>
+
+</body>
+
+</html>
